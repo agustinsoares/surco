@@ -1,11 +1,16 @@
 import { createServerClient } from "@supabase/ssr";
+import createIntlMiddleware from "next-intl/middleware";
 import { NextResponse } from "next/server";
+import { routing } from "./i18n/routing";
 
-// Refresca la sesión de Supabase en cada request (patrón recomendado por
-// @supabase/ssr). El control de acceso real a /cuenta y /admin se hace en
-// los layouts de esas rutas (Server Components), no acá.
+const intlMiddleware = createIntlMiddleware(routing);
+
+// 1) next-intl decide el locale (y redirige/reescribe si hace falta).
+// 2) Sobre esa misma respuesta, refrescamos la sesión de Supabase (patrón
+//    recomendado por @supabase/ssr) para que las cookies de auth viajen
+//    actualizadas en cada request.
 export async function proxy(request) {
-  let response = NextResponse.next({ request });
+  const response = intlMiddleware(request);
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -16,10 +21,6 @@ export async function proxy(request) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value)
-          );
-          response = NextResponse.next({ request });
           cookiesToSet.forEach(({ name, value, options }) =>
             response.cookies.set(name, value, options)
           );
@@ -30,7 +31,7 @@ export async function proxy(request) {
 
   await supabase.auth.getUser();
 
-  return response;
+  return response ?? NextResponse.next();
 }
 
 export const config = {

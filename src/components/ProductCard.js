@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useCart } from "./CartContext";
 import { formatoPrecio } from "@/lib/format";
 
 export default function ProductCard({ producto }) {
+  const t = useTranslations("Shop");
   const { agregar } = useCart();
   const sinStock = producto.existencias <= 0;
 
@@ -20,7 +22,7 @@ export default function ProductCard({ producto }) {
           className="object-cover transition-transform duration-300 hover:scale-105"
         />
         {sinStock && (
-          <span className="badge absolute left-2 top-2 bg-black/70 text-white">Agotado</span>
+          <span className="badge absolute left-2 top-2 bg-black/70 text-white">{t("outOfStock")}</span>
         )}
       </Link>
       <div className="flex flex-1 flex-col gap-1 p-3">
@@ -41,7 +43,7 @@ export default function ProductCard({ producto }) {
             onClick={() => agregar(producto, 1)}
             className="btn btn-primary text-xs"
           >
-            {sinStock ? "Sin stock" : "Agregar"}
+            {sinStock ? t("outOfStockButton") : t("add")}
           </button>
         </div>
       </div>

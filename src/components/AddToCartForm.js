@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useCart } from "./CartContext";
 
 export default function AddToCartForm({ producto }) {
+  const t = useTranslations("Product");
   const { agregar } = useCart();
   const [cantidad, setCantidad] = useState(1);
   const [agregado, setAgregado] = useState(false);
@@ -33,7 +35,7 @@ export default function AddToCartForm({ producto }) {
           setTimeout(() => setAgregado(false), 1500);
         }}
       >
-        {sinStock ? "Sin stock" : agregado ? "¡Agregado! ✓" : "Agregar al carrito"}
+        {sinStock ? t("outOfStock") : agregado ? t("added") : t("addToCart")}
       </button>
     </div>
   );

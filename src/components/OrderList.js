@@ -1,17 +1,19 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { cancelarPedido } from "@/lib/actions/pedidos";
 import { formatoFecha, formatoPrecio, numeroPedido } from "@/lib/format";
 
 export default function OrderList({ pedidos }) {
+  const t = useTranslations("Account");
   const [pendienteId, setPendienteId] = useState(null);
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState(null);
 
   if (pedidos.length === 0) {
-    return <p style={{ color: "var(--muted)" }}>Todavía no hiciste ningún pedido.</p>;
+    return <p style={{ color: "var(--muted)" }}>{t("noOrders")}</p>;
   }
 
   function onCancelar(id) {
@@ -48,7 +50,7 @@ export default function OrderList({ pedidos }) {
             </span>
             <div className="flex gap-2">
               <Link href={`/cuenta/pedidos/${p.id}`} className="btn btn-secondary text-xs">
-                Ver pedido
+                {t("viewOrder")}
               </Link>
               {estado === "Pendiente" && (
                 <button
@@ -57,7 +59,7 @@ export default function OrderList({ pedidos }) {
                   disabled={pending && pendienteId === p.id}
                   onClick={() => onCancelar(p.id)}
                 >
-                  {pending && pendienteId === p.id ? "Cancelando…" : "Cancelar"}
+                  {pending && pendienteId === p.id ? t("cancelling") : t("cancel")}
                 </button>
               )}
             </div>
