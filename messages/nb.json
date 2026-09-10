@@ -110,7 +110,9 @@
     "noOrders": "Du har ikke lagt inn noen bestillinger ennå.",
     "viewOrder": "Se bestilling",
     "cancel": "Avbryt",
-    "cancelling": "Avbryter…"
+    "cancelling": "Avbryter…",
+    "adminAccess": "Gå til adminpanel",
+    "noAdminPermission": "Den kontoen har ikke administratorrettigheter."
   },
   "OrderDetail": {
     "title": "Bestilling {number}",

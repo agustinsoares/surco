@@ -17,7 +17,10 @@ son arte generado, sin ninguna imagen ni marca de terceros.
   checkout con validación de pago (solo formato, no hay pasarela real),
   cuenta de usuario (datos, contraseña, historial de pedidos, cancelar
   pedido), contacto, y panel de administración (productos, pedidos con
-  cambio de estado, usuarios, mensajes de contacto).
+  cambio de estado, usuarios, mensajes de contacto). Además hay una vista de
+  demostración pública del panel admin en `/admin-demo` (con datos de
+  ejemplo, de solo lectura) para que cualquiera pueda ver cómo funciona sin
+  necesidad de loguearse ni poder modificar nada.
 - `npm run build` y `npm run lint` pasan sin errores.
 - Lógica de stock/pedidos verificada contra una base Postgres local antes de
   aplicarla en Supabase (creación de pedido atómica, cancelación repone
@@ -71,7 +74,8 @@ update public.perfiles set admin = true
 where id = (select id from auth.users where email = 'TU_EMAIL_AQUI');
 ```
 
-3. Entrá a `/admin/login` con esa misma cuenta.
+3. Entrá a `/login` con esa misma cuenta y, ya en `/cuenta`, tocá el botón
+   "Acceder al panel admin" (solo aparece si el usuario es admin).
 
 ## Estructura
 

@@ -110,7 +110,9 @@
     "noOrders": "Todavía no hiciste ningún pedido.",
     "viewOrder": "Ver pedido",
     "cancel": "Cancelar",
-    "cancelling": "Cancelando…"
+    "cancelling": "Cancelando…",
+    "adminAccess": "Acceder al panel admin",
+    "noAdminPermission": "Esa cuenta no tiene permisos de administrador."
   },
   "OrderDetail": {
     "title": "Pedido {number}",

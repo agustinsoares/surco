@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="flex gap-5">
           <Link href="/tienda">{t("catalog")}</Link>
           <Link href="/contacto">{t("contact")}</Link>
-          <Link href="/admin/login">{t("adminPanel")}</Link>
+          <Link href="/admin-demo">{t("adminPanel")}</Link>
         </div>
       </div>
     </footer>

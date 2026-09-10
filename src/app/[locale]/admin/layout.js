@@ -4,8 +4,8 @@ import { cerrarSesion } from "@/lib/actions/auth";
 
 export default async function AdminLayout({ children }) {
   const usuario = await getUsuarioActual();
-  if (!usuario) redirect("/admin/login");
-  if (!usuario.perfil?.admin) redirect("/admin/login?sinpermiso=1");
+  if (!usuario) redirect("/login?next=/admin/productos");
+  if (!usuario.perfil?.admin) redirect("/cuenta?sinpermiso=1");
 
   return (
     <div className="grid gap-6 md:grid-cols-[200px_1fr]">

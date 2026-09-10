@@ -110,7 +110,9 @@
     "noOrders": "You haven't placed any orders yet.",
     "viewOrder": "View order",
     "cancel": "Cancel",
-    "cancelling": "Cancelling…"
+    "cancelling": "Cancelling…",
+    "adminAccess": "Go to admin panel",
+    "noAdminPermission": "That account doesn't have admin permissions."
   },
   "OrderDetail": {
     "title": "Order {number}",
