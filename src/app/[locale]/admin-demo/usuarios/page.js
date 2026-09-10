@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 // Datos de ejemplo fijos (ver nota en pedidos/page.js): nunca se leen
 // usuarios reales en la demo pública.
 const USUARIOS_DEMO = [
@@ -7,10 +9,12 @@ const USUARIOS_DEMO = [
   { usuario: "erikaas", nombre: "Erik", apellidos: "Aas", telefono: "934567890", admin: false, activo: false, num_pedidos: 0 },
 ];
 
-export default function AdminDemoUsuariosPage() {
+export default async function AdminDemoUsuariosPage() {
+  const t = await getTranslations("AdminDemo");
+
   return (
     <div>
-      <h1 className="mb-4 text-2xl font-black">Usuarios</h1>
+      <h1 className="mb-4 text-2xl font-black">{t("usuariosTitle")}</h1>
       <div className="flex flex-col gap-2">
         {USUARIOS_DEMO.map((u) => (
           <div key={u.usuario} className="card p-4">
@@ -20,7 +24,7 @@ export default function AdminDemoUsuariosPage() {
                   @{u.usuario}{" "}
                   {u.admin && (
                     <span className="badge ml-1" style={{ background: "var(--brand)", color: "white" }}>
-                      admin
+                      {t("adminBadge")}
                     </span>
                   )}
                 </p>
@@ -35,21 +39,21 @@ export default function AdminDemoUsuariosPage() {
                   color: u.activo ? "#1c6b34" : "#8f2c22",
                 }}
               >
-                {u.activo ? "Activo" : "Inactivo"}
+                {u.activo ? t("active") : t("inactive")}
               </span>
               <p className="text-sm" style={{ color: "var(--muted)" }}>
-                {u.num_pedidos} pedido(s)
+                {t("orders", { count: u.num_pedidos })}
               </p>
               <div className="flex gap-2">
-                <button type="button" className="btn btn-secondary text-xs" disabled title="Deshabilitado en la demo">
-                  Editar
+                <button type="button" className="btn btn-secondary text-xs" disabled title={t("disabled")}>
+                  {t("edit")}
                 </button>
-                <button type="button" className="btn btn-secondary text-xs" disabled title="Deshabilitado en la demo">
-                  {u.activo ? "Desactivar" : "Activar"}
+                <button type="button" className="btn btn-secondary text-xs" disabled title={t("disabled")}>
+                  {u.activo ? t("deactivate") : t("activate")}
                 </button>
                 {u.num_pedidos === 0 && (
-                  <button type="button" className="btn btn-danger text-xs" disabled title="Deshabilitado en la demo">
-                    Borrar
+                  <button type="button" className="btn btn-danger text-xs" disabled title={t("disabled")}>
+                    {t("delete")}
                   </button>
                 )}
               </div>
