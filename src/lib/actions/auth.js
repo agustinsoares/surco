@@ -1,7 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 
 export async function iniciarSesion(_prevState, formData) {
@@ -21,7 +22,7 @@ export async function iniciarSesion(_prevState, formData) {
   }
 
   revalidatePath("/", "layout");
-  redirect(next);
+  redirect({ href: next, locale: await getLocale() });
 }
 
 export async function registrarse(_prevState, formData) {
@@ -66,14 +67,14 @@ export async function registrarse(_prevState, formData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/cuenta");
+  redirect({ href: "/cuenta", locale: await getLocale() });
 }
 
 export async function cerrarSesion() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect({ href: "/", locale: await getLocale() });
 }
 
 export async function actualizarPerfil(_prevState, formData) {

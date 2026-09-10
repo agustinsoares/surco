@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { getUsuarioActual } from "@/lib/data";
 import CheckoutForm from "@/components/CheckoutForm";
@@ -6,9 +6,10 @@ import CheckoutForm from "@/components/CheckoutForm";
 export default async function CheckoutPage() {
   const t = await getTranslations("Checkout");
   const usuario = await getUsuarioActual();
-  if (!usuario) redirect("/login?next=/checkout");
+  const locale = await getLocale();
+  if (!usuario) redirect({ href: "/login?next=/checkout", locale });
   if (usuario.perfil && usuario.perfil.activo === false) {
-    redirect("/login?next=/checkout&desactivado=1");
+    redirect({ href: "/login?next=/checkout&desactivado=1", locale });
   }
 
   return (

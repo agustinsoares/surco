@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link, redirect } from "@/i18n/navigation";
 import { getPedidosDeUsuario, getUsuarioActual } from "@/lib/data";
 import ProfileForm from "@/components/ProfileForm";
@@ -9,7 +9,7 @@ import { cerrarSesion } from "@/lib/actions/auth";
 export default async function CuentaPage({ searchParams }) {
   const t = await getTranslations("Account");
   const usuario = await getUsuarioActual();
-  if (!usuario) redirect("/login?next=/cuenta");
+  if (!usuario) redirect({ href: "/login?next=/cuenta", locale: await getLocale() });
 
   const params = await searchParams;
   const sinPermiso = params?.sinpermiso === "1";

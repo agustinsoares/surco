@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { getPedidoConDetalle, getUsuarioActual } from "@/lib/data";
 import { formatoFecha, formatoPrecio, numeroPedido } from "@/lib/format";
@@ -8,7 +8,7 @@ export default async function DetallePedidoPage({ params }) {
   const { id } = await params;
   const t = await getTranslations("OrderDetail");
   const usuario = await getUsuarioActual();
-  if (!usuario) redirect(`/login?next=/cuenta/pedidos/${id}`);
+  if (!usuario) redirect({ href: `/login?next=/cuenta/pedidos/${id}`, locale: await getLocale() });
 
   const pedido = await getPedidoConDetalle(id);
   // RLS ya impide traer pedidos ajenos, pero validamos explícito por claridad.

@@ -1,7 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
+import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
@@ -46,7 +47,7 @@ export async function crearProducto(_prevState, formData) {
   if (error) return { error: "No se pudo crear el producto." };
 
   revalidatePath("/admin/productos");
-  redirect("/admin/productos");
+  redirect({ href: "/admin/productos", locale: await getLocale() });
 }
 
 export async function actualizarProducto(id, _prevState, formData) {
@@ -59,7 +60,7 @@ export async function actualizarProducto(id, _prevState, formData) {
   if (error) return { error: "No se pudo actualizar el producto." };
 
   revalidatePath("/admin/productos");
-  redirect("/admin/productos");
+  redirect({ href: "/admin/productos", locale: await getLocale() });
 }
 
 export async function borrarProducto(id) {

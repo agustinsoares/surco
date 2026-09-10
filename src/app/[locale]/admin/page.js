@@ -1,5 +1,7 @@
+import { getLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 
-export default function AdminIndex() {
-  redirect("/admin/productos");
+export default async function AdminIndex() {
+  const locale = await getLocale();
+  redirect({ href: "/admin/productos", locale });
 }

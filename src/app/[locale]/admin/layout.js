@@ -1,11 +1,13 @@
+import { getLocale } from "next-intl/server";
 import { Link, redirect } from "@/i18n/navigation";
 import { getUsuarioActual } from "@/lib/data";
 import { cerrarSesion } from "@/lib/actions/auth";
 
 export default async function AdminLayout({ children }) {
   const usuario = await getUsuarioActual();
-  if (!usuario) redirect("/login?next=/admin/productos");
-  if (!usuario.perfil?.admin) redirect("/cuenta?sinpermiso=1");
+  const locale = await getLocale();
+  if (!usuario) redirect({ href: "/login?next=/admin/productos", locale });
+  if (!usuario.perfil?.admin) redirect({ href: "/cuenta?sinpermiso=1", locale });
 
   return (
     <div className="grid gap-6 md:grid-cols-[200px_1fr]">
