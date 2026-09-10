@@ -11,8 +11,14 @@ export default function Header({ usuario }) {
   const router = useRouter();
   const { cantidadTotal, listo } = useCart();
 
-  function cambiarIdioma(nuevoLocale) {
-    router.replace(pathname, { locale: nuevoLocale });
+  const idiomas = [
+    { codigo: "es", etiqueta: "Español" },
+    { codigo: "en", etiqueta: "English" },
+    { codigo: "nb", etiqueta: "Norsk bokmål" },
+  ];
+
+  function cambiarIdioma(event) {
+    router.replace(pathname, { locale: event.target.value });
   }
 
   return (
@@ -38,26 +44,23 @@ export default function Header({ usuario }) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 text-xs font-semibold" role="group" aria-label="Language">
-            <button
-              type="button"
-              onClick={() => cambiarIdioma("es")}
-              className="btn btn-secondary px-2 py-1"
-              style={locale === "es" ? { background: "var(--brand)", color: "white" } : undefined}
-              aria-current={locale === "es"}
-            >
-              ES
-            </button>
-            <button
-              type="button"
-              onClick={() => cambiarIdioma("en")}
-              className="btn btn-secondary px-2 py-1"
-              style={locale === "en" ? { background: "var(--brand)", color: "white" } : undefined}
-              aria-current={locale === "en"}
-            >
-              EN
-            </button>
-          </div>
+          <label className="sr-only" htmlFor="idioma">
+            Idioma
+          </label>
+          <select
+            id="idioma"
+            className="input px-2 py-1 text-xs font-semibold"
+            style={{ width: "auto" }}
+            value={locale}
+            onChange={cambiarIdioma}
+            aria-label="Idioma"
+          >
+            {idiomas.map((i) => (
+              <option key={i.codigo} value={i.codigo}>
+                {i.etiqueta}
+              </option>
+            ))}
+          </select>
           <Link href="/carrito" className="btn btn-secondary relative">
             🛒 {t("cart")}
             {listo && cantidadTotal > 0 && (
