@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getProducto } from "@/lib/data";
 import { formatoPrecio } from "@/lib/format";
+import { descripcionLocalizada } from "@/lib/content";
 import AddToCartForm from "@/components/AddToCartForm";
 
 export default async function ProductoPage({ params }) {
-  const { id } = await params;
+  const { id, locale } = await params;
   const t = await getTranslations("Product");
   const producto = await getProducto(id);
   if (!producto) notFound();
@@ -24,7 +25,7 @@ export default async function ProductoPage({ params }) {
         <p className="mt-1 text-lg" style={{ color: "var(--muted)" }}>
           {producto.autor}
         </p>
-        <p className="mt-4 leading-relaxed">{producto.descripcion}</p>
+        <p className="mt-4 leading-relaxed">{descripcionLocalizada(producto, locale)}</p>
         <p className="mt-6 text-2xl font-bold">{formatoPrecio(producto.precio)}</p>
         <p className="mb-4 text-sm" style={{ color: "var(--muted)" }}>
           {producto.existencias > 0 ? t("inStock", { count: producto.existencias }) : t("noStock")}

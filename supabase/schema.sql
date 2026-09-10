@@ -24,6 +24,10 @@ create table if not exists public.productos (
   nombre text not null,
   autor text not null,
   descripcion text default '',
+  -- Traducciones opcionales de la descripción para el selector de idioma
+  -- (es/en/nb); si faltan, la UI cae de vuelta a `descripcion` (español).
+  descripcion_en text,
+  descripcion_nb text,
   precio numeric(8, 2) not null default 0 check (precio >= 0),
   existencias integer not null default 0 check (existencias >= 0),
   imagen text not null,
@@ -385,6 +389,9 @@ insert into public.categorias (slug, descripcion) values
   ('soul-jazz', 'Soul & Jazz')
 on conflict (slug) do nothing;
 
+-- Nota: descripcion_en / descripcion_nb no se completan acá para no repetir
+-- las 20 filas en tres idiomas; se cargan aparte con una migración de datos
+-- (ver "agregar_descripcion_multilingue" en el historial de migraciones).
 insert into public.productos (nombre, autor, descripcion, precio, existencias, imagen, categoria_id)
 select v.nombre, v.autor, v.descripcion, v.precio, v.existencias, v.imagen, c.id
 from (values

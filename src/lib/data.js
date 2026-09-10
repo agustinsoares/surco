@@ -45,7 +45,9 @@ export async function getProducto(id) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("productos")
-    .select("id, nombre, autor, descripcion, precio, existencias, imagen, categoria_id, categorias(slug, descripcion)")
+    .select(
+      "id, nombre, autor, descripcion, descripcion_en, descripcion_nb, precio, existencias, imagen, categoria_id, categorias(slug, descripcion)"
+    )
     .eq("id", id)
     .maybeSingle();
   if (error) throw error;
