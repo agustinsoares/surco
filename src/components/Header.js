@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useCart } from "./CartContext";
+import Flag from "./Flags";
 
 export default function Header({ usuario }) {
   const t = useTranslations("Nav");
@@ -17,8 +18,8 @@ export default function Header({ usuario }) {
     { codigo: "nb", etiqueta: "Norsk bokmål" },
   ];
 
-  function cambiarIdioma(event) {
-    router.replace(pathname, { locale: event.target.value });
+  function cambiarIdioma(codigo) {
+    router.replace(pathname, { locale: codigo });
   }
 
   return (
@@ -44,23 +45,27 @@ export default function Header({ usuario }) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <label className="sr-only" htmlFor="idioma">
-            Idioma
-          </label>
-          <select
-            id="idioma"
-            className="input px-2 py-1 text-xs font-semibold"
-            style={{ width: "auto" }}
-            value={locale}
-            onChange={cambiarIdioma}
-            aria-label="Idioma"
-          >
+          <div className="flex items-center gap-1" role="group" aria-label="Idioma">
             {idiomas.map((i) => (
-              <option key={i.codigo} value={i.codigo}>
-                {i.etiqueta}
-              </option>
+              <button
+                key={i.codigo}
+                type="button"
+                title={i.etiqueta}
+                aria-label={i.etiqueta}
+                aria-pressed={i.codigo === locale}
+                onClick={() => cambiarIdioma(i.codigo)}
+                className="overflow-hidden rounded-sm border"
+                style={{
+                  borderColor: i.codigo === locale ? "var(--brand)" : "var(--border)",
+                  opacity: i.codigo === locale ? 1 : 0.55,
+                  outline: i.codigo === locale ? "2px solid var(--brand)" : "none",
+                  outlineOffset: 1,
+                }}
+              >
+                <Flag codigo={i.codigo} className="block h-5 w-[30px]" />
+              </button>
             ))}
-          </select>
+          </div>
           <Link href="/carrito" className="btn btn-secondary relative">
             🛒 {t("cart")}
             {listo && cantidadTotal > 0 && (
