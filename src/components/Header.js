@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useCart } from "./CartContext";
@@ -18,7 +19,28 @@ export default function Header({ usuario }) {
     { codigo: "nb", etiqueta: "Norsk bokmål" },
   ];
 
+  const [abierto, setAbierto] = useState(false);
+  const menuRef = useRef(null);
+  const actual = idiomas.find((i) => i.codigo === locale) ?? idiomas[0];
+
+  useEffect(() => {
+    if (!abierto) return;
+    function cerrarFuera(event) {
+      if (!menuRef.current?.contains(event.target)) setAbierto(false);
+    }
+    function cerrarConEscape(event) {
+      if (event.key === "Escape") setAbierto(false);
+    }
+    document.addEventListener("mousedown", cerrarFuera);
+    document.addEventListener("keydown", cerrarConEscape);
+    return () => {
+      document.removeEventListener("mousedown", cerrarFuera);
+      document.removeEventListener("keydown", cerrarConEscape);
+    };
+  }, [abierto]);
+
   function cambiarIdioma(codigo) {
+    setAbierto(false);
     router.replace(pathname, { locale: codigo });
   }
 
@@ -45,26 +67,44 @@ export default function Header({ usuario }) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1" role="group" aria-label="Idioma">
-            {idiomas.map((i) => (
-              <button
-                key={i.codigo}
-                type="button"
-                title={i.etiqueta}
-                aria-label={i.etiqueta}
-                aria-pressed={i.codigo === locale}
-                onClick={() => cambiarIdioma(i.codigo)}
-                className="overflow-hidden rounded-sm border"
-                style={{
-                  borderColor: i.codigo === locale ? "var(--brand)" : "var(--border)",
-                  opacity: i.codigo === locale ? 1 : 0.55,
-                  outline: i.codigo === locale ? "2px solid var(--brand)" : "none",
-                  outlineOffset: 1,
-                }}
+          <div className="relative" ref={menuRef}>
+            <button
+              type="button"
+              className="input flex items-center gap-2 px-2 py-1"
+              style={{ width: "auto" }}
+              aria-haspopup="listbox"
+              aria-expanded={abierto}
+              aria-label={`Idioma: ${actual.etiqueta}`}
+              title={actual.etiqueta}
+              onClick={() => setAbierto((v) => !v)}
+            >
+              <Flag codigo={actual.codigo} className="block h-4 w-6 rounded-sm" />
+              <span aria-hidden className="text-[10px]">▾</span>
+            </button>
+            {abierto && (
+              <ul
+                role="listbox"
+                aria-label="Idioma"
+                className="card absolute right-0 z-50 mt-1 flex flex-col gap-1 p-1"
               >
-                <Flag codigo={i.codigo} className="block h-5 w-[30px]" />
-              </button>
-            ))}
+                {idiomas.map((i) => (
+                  <li key={i.codigo} role="option" aria-selected={i.codigo === locale}>
+                    <button
+                      type="button"
+                      title={i.etiqueta}
+                      aria-label={i.etiqueta}
+                      onClick={() => cambiarIdioma(i.codigo)}
+                      className="flex w-full items-center justify-center rounded px-2 py-1"
+                      style={{
+                        background: i.codigo === locale ? "var(--border)" : "transparent",
+                      }}
+                    >
+                      <Flag codigo={i.codigo} className="block h-4 w-6 rounded-sm" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <Link href="/carrito" className="btn btn-secondary relative">
             🛒 {t("cart")}
