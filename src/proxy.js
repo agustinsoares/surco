@@ -29,7 +29,18 @@ export async function proxy(request) {
     }
   );
 
-  await supabase.auth.getUser();
+  // Solo hay sesión que refrescar si existe la cookie de auth. Además, si
+  // Supabase no responde no debemos tumbar la página: seguimos sin refrescar.
+  const hayCookieDeSesion = request.cookies
+    .getAll()
+    .some((c) => c.name.startsWith("sb-"));
+  if (hayCookieDeSesion) {
+    try {
+      await supabase.auth.getUser();
+    } catch (e) {
+      console.error("proxy: no se pudo refrescar la sesión de Supabase", e);
+    }
+  }
 
   return response ?? NextResponse.next();
 }

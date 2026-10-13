@@ -187,5 +187,10 @@
     "contacto2Mensaje": "Alt kom fint fram, takk. Sender dere også til Norge?",
     "contacto3Mensaje": "Spørsmål om bestillingsstatusen min, jeg fikk aldri bekreftelses-e-posten.",
     "usuarioEliminado": "Slettet bruker"
+  },
+  "Error": {
+    "title": "Noe gikk galt",
+    "message": "Vi kunne ikke laste inn denne siden. Prøv igjen om noen minutter.",
+    "retry": "Prøv igjen"
   }
 }

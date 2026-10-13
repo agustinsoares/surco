@@ -187,5 +187,10 @@
     "contacto2Mensaje": "Llegó todo perfecto, gracias. ¿Hacen envíos a Noruega también?",
     "contacto3Mensaje": "Consulta sobre el estado de mi pedido, no me llegó el mail de confirmación.",
     "usuarioEliminado": "Usuario eliminado"
+  },
+  "Error": {
+    "title": "Algo salió mal",
+    "message": "No pudimos cargar esta página. Inténtalo de nuevo en unos minutos.",
+    "retry": "Reintentar"
   }
 }

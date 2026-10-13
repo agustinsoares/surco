@@ -6,7 +6,10 @@ import ProductCard from "@/components/ProductCard";
 
 export default async function HomePage() {
   const t = await getTranslations("Home");
-  const productos = await getProductos();
+  const productos = await getProductos().catch((e) => {
+    console.error("HomePage: no se pudo cargar el catálogo", e);
+    return [];
+  });
   const destacados = productos.slice(0, 4);
 
   return (

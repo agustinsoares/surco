@@ -187,5 +187,10 @@
     "contacto2Mensaje": "Everything arrived perfectly, thanks. Do you also ship to Norway?",
     "contacto3Mensaje": "Question about my order status, I never got the confirmation email.",
     "usuarioEliminado": "Deleted user"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "message": "We couldn't load this page. Please try again in a few minutes.",
+    "retry": "Try again"
   }
 }
