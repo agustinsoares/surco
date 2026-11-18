@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "estados": [
+    {
+      "id": 1,
+      "descripcion": "Pendiente"
+    },
+    {
+      "id": 2,
+      "descripcion": "Enviado"
+    },
+    {
+      "id": 3,
+      "descripcion": "Entregado"
+    },
+    {
+      "id": 4,
+      "descripcion": "Cancelado"
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "slug": "indie-rock",
+      "descripcion": "Indie Rock"
+    },
+    {
+      "id": 2,
+      "slug": "electronica",
+      "descripcion": "Electrónica"
+    },
+    {
+      "id": 3,
+      "slug": "soul-jazz",
+      "descripcion": "Soul & Jazz"
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Marea Baja",
+      "autor": "Los Cometas Pálidos",
+      "descripcion": "Segundo LP grabado en una casa junto al mar.",
+      "descripcion_en": "Second LP recorded in a house by the sea.",
+      "descripcion_nb": "Andre LP, spilt inn i et hus ved havet.",
+      "precio": 25,
+      "existencias": 8,
+      "imagen": "/img/covers/marea-baja.jpg",
+      "categoria_id": 1,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "nombre": "Vidrio",
+      "autor": "Aurora Seca",
+      "descripcion": "Synth-pop introspectivo grabado en Bergen.",
+      "descripcion_en": "Introspective synth-pop recorded in Bergen.",
+      "descripcion_nb": "Introspektiv synthpop spilt inn i Bergen.",
+      "precio": 22,
+      "existencias": 10,
+      "imagen": "/img/covers/vidrio.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "nombre": "Humo de Domingo",
+      "autor": "Cigarra Roja",
+      "descripcion": "Soul contemporáneo con vientos en vivo.",
+      "descripcion_en": "Contemporary soul with live horns.",
+      "descripcion_nb": "Moderne soul med levende blåsere.",
+      "precio": 28,
+      "existencias": 6,
+      "imagen": "/img/covers/humo-de-domingo.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "nombre": "Satélite Doméstico",
+      "autor": "Fósforo",
+      "descripcion": "Rock lo-fi grabado en un garaje de Valencia.",
+      "descripcion_en": "Lo-fi rock recorded in a garage in Valencia.",
+      "descripcion_nb": "Lo-fi-rock spilt inn i en garasje i Valencia.",
+      "precio": 20,
+      "existencias": 12,
+      "imagen": "/img/covers/satelite-domestico.jpg",
+      "categoria_id": 1,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "nombre": "Nocturama Vol. 2",
+      "autor": "DJ Ceniza",
+      "descripcion": "Techno melódico para noches largas.",
+      "descripcion_en": "Melodic techno for long nights.",
+      "descripcion_nb": "Melodisk techno for lange netter.",
+      "precio": 24,
+      "existencias": 9,
+      "imagen": "/img/covers/nocturama-vol-2.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "nombre": "Tinta y Sal",
+      "autor": "Marola",
+      "descripcion": "Jazz vocal con influencias mediterráneas.",
+      "descripcion_en": "Vocal jazz with Mediterranean influences.",
+      "descripcion_nb": "Vokaljazz med middelhavsinnflytelse.",
+      "precio": 30,
+      "existencias": 5,
+      "imagen": "/img/covers/tinta-y-sal.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "nombre": "Kilómetro Cero",
+      "autor": "Los Cometas Pálidos",
+      "descripcion": "EP conceptual sobre volver a casa.",
+      "descripcion_en": "Concept EP about coming home.",
+      "descripcion_nb": "Konsept-EP om å komme hjem.",
+      "precio": 18,
+      "existencias": 14,
+      "imagen": "/img/covers/kilometro-cero.jpg",
+      "categoria_id": 1,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "nombre": "Campo Magnético",
+      "autor": "Aurora Seca",
+      "descripcion": "Ambient/IDM grabado con sintetizadores modulares.",
+      "descripcion_en": "Ambient/IDM recorded with modular synthesizers.",
+      "descripcion_nb": "Ambient/IDM spilt inn med modulære synthesizere.",
+      "precio": 26,
+      "existencias": 7,
+      "imagen": "/img/covers/campo-magnetico.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "nombre": "Bajo Fondo",
+      "autor": "Río Tinto Trío",
+      "descripcion": "Trío de jazz instrumental, grabación en directo.",
+      "descripcion_en": "Instrumental jazz trio, recorded live.",
+      "descripcion_nb": "Instrumental jazztrio, liveinnspilling.",
+      "precio": 32,
+      "existencias": 4,
+      "imagen": "/img/covers/bajo-fondo.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "nombre": "Antenas",
+      "autor": "Fósforo",
+      "descripcion": "Segundo álbum, sonido más pulido.",
+      "descripcion_en": "Second album, with a more polished sound.",
+      "descripcion_nb": "Andre album, med en mer polert lyd.",
+      "precio": 23,
+      "existencias": 11,
+      "imagen": "/img/covers/antenas.jpg",
+      "categoria_id": 1,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "nombre": "Fricción",
+      "autor": "Circuito Norte",
+      "descripcion": "Electro-pop bailable con letras en español.",
+      "descripcion_en": "Danceable electro-pop with Spanish lyrics.",
+      "descripcion_nb": "Dansbar elektropop med spanske tekster.",
+      "precio": 21,
+      "existencias": 15,
+      "imagen": "/img/covers/friccion.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "nombre": "Aguas Quietas",
+      "autor": "Marola",
+      "descripcion": "Balada y bossa, colaboración con Río Tinto Trío.",
+      "descripcion_en": "Ballads and bossa, a collaboration with Río Tinto Trío.",
+      "descripcion_nb": "Ballader og bossa, et samarbeid med Río Tinto Trío.",
+      "precio": 29,
+      "existencias": 6,
+      "imagen": "/img/covers/aguas-quietas.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 13,
+      "nombre": "Cinta Adhesiva",
+      "autor": "Los Cometas Pálidos",
+      "descripcion": "Grandes éxitos + inéditos, edición limitada.",
+      "descripcion_en": "Greatest hits plus unreleased tracks, limited edition.",
+      "descripcion_nb": "Største hits pluss uutgitte spor, begrenset opplag.",
+      "precio": 35,
+      "existencias": 3,
+      "imagen": "/img/covers/cinta-adhesiva.jpg",
+      "categoria_id": 1,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 14,
+      "nombre": "Paralelo 40",
+      "autor": "DJ Ceniza",
+      "descripcion": "House minimalista, mezcla continua.",
+      "descripcion_en": "Minimal house, continuous mix.",
+      "descripcion_nb": "Minimalistisk house, kontinuerlig miks.",
+      "precio": 24,
+      "existencias": 10,
+      "imagen": "/img/covers/paralelo-40.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 15,
+      "nombre": "Sombra Larga",
+      "autor": "Cigarra Roja",
+      "descripcion": "Neo-soul, producción con caja de ritmos analógica.",
+      "descripcion_en": "Neo-soul produced with an analog drum machine.",
+      "descripcion_nb": "Neo-soul produsert med analog trommemaskin.",
+      "precio": 27,
+      "existencias": 8,
+      "imagen": "/img/covers/sombra-larga.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 16,
+      "nombre": "Radiofrecuencia",
+      "autor": "Circuito Norte",
+      "descripcion": "Debut, sintetizadores y voz procesada.",
+      "descripcion_en": "Debut album: synthesizers and processed vocals.",
+      "descripcion_nb": "Debutalbum: synthesizere og bearbeidet vokal.",
+      "precio": 19,
+      "existencias": 13,
+      "imagen": "/img/covers/radiofrecuencia.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 17,
+      "nombre": "Ceniza y Vidrio",
+      "autor": "Fósforo",
+      "descripcion": "Colaboración con Aurora Seca, cruce rock/electrónica.",
+      "descripcion_en": "A collaboration with Aurora Seca, crossing rock and electronic music.",
+      "descripcion_nb": "Et samarbeid med Aurora Seca i grenselandet mellom rock og elektronika.",
+      "precio": 25,
+      "existencias": 9,
+      "imagen": "/img/covers/ceniza-y-vidrio.jpg",
+      "categoria_id": 1,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 18,
+      "nombre": "Bitácora",
+      "autor": "Río Tinto Trío",
+      "descripcion": "Jazz de cámara, cuerdas y piano.",
+      "descripcion_en": "Chamber jazz with strings and piano.",
+      "descripcion_nb": "Kammerjazz med strykere og piano.",
+      "precio": 33,
+      "existencias": 5,
+      "imagen": "/img/covers/bitacora.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 19,
+      "nombre": "Litoral",
+      "autor": "Marola",
+      "descripcion": "Debut, grabado en Bergen durante un intercambio.",
+      "descripcion_en": "Debut album, recorded in Bergen during an exchange.",
+      "descripcion_nb": "Debutalbum, spilt inn i Bergen under et utvekslingsopphold.",
+      "precio": 26,
+      "existencias": 10,
+      "imagen": "/img/covers/litoral.jpg",
+      "categoria_id": 3,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    },
+    {
+      "id": 20,
+      "nombre": "Interferencia",
+      "autor": "DJ Ceniza & Circuito Norte",
+      "descripcion": "Split LP, dos caras, dos productores.",
+      "descripcion_en": "Split LP: two sides, two producers.",
+      "descripcion_nb": "Split-LP: to sider, to produsenter.",
+      "precio": 22,
+      "existencias": 12,
+      "imagen": "/img/covers/interferencia.jpg",
+      "categoria_id": 2,
+      "creado_en": "2026-06-01T12:00:00.000Z"
+    }
+  ],
+  "usuarios": [],
+  "perfiles": [],
+  "pedidos": [],
+  "detalle": [],
+  "contacto": []
+}

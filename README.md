@@ -8,6 +8,29 @@ independientes (indie rock, electrónica, soul & jazz) para evitar problemas
 de copyright y encajar mejor en un portfolio. Las 20 portadas del catálogo
 son arte generado, sin ninguna imagen ni marca de terceros.
 
+## Datos: ahora en local (Supabase desactivado)
+
+El proyecto de Supabase del plan gratuito se cancelaba por inactividad, así
+que la app ahora guarda todo en una **base local en un archivo JSON**
+(`src/lib/local/`). El código de Supabase sigue en el repo, comentado, para
+poder volver a usarlo. La lista completa de datos que se usaban en Supabase,
+su reemplazo local y cómo revertirlo está en
+[`docs/datos-supabase.md`](docs/datos-supabase.md).
+
+Para correrlo:
+
+```bash
+cp .env.example .env.local   # completá AUTH_SECRET, ADMIN_EMAIL y ADMIN_PASSWORD
+npm install
+npm run dev
+```
+
+La primera vez se crea `.data/db.json` con el catálogo y la cuenta admin.
+Borrar ese archivo resetea la tienda. En Vercel la base vive en `/tmp` y se
+reinicia cuando se recicla la instancia (las cuentas y pedidos nuevos no
+son permanentes). Las secciones de abajo sobre Supabase quedan como
+referencia histórica.
+
 ## Ya está hecho
 
 - Proyecto de Supabase creado y con el schema aplicado (tablas, RLS, RPC de
