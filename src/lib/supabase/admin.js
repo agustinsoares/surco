@@ -1,3 +1,10 @@
+// ===========================================================================
+// CLIENTE DE SUPABASE (desactivado)
+// ---------------------------------------------------------------------------
+// La app ahora usa la base local (src/lib/local/). Este archivo se dejó
+// comentado para poder volver a Supabase. Ver docs/datos-supabase.md.
+// ===========================================================================
+/*
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
 // Cliente con la service role key: solo se usa en Server Actions del panel
@@ -10,3 +17,6 @@ export function createAdminClient() {
     { auth: { autoRefreshToken: false, persistSession: false } }
   );
 }
+*/
+
+export {};

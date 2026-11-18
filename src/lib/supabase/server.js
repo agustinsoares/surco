@@ -1,3 +1,10 @@
+// ===========================================================================
+// CLIENTE DE SUPABASE (desactivado)
+// ---------------------------------------------------------------------------
+// La app ahora usa la base local (src/lib/local/). Este archivo se dejó
+// comentado para poder volver a Supabase. Ver docs/datos-supabase.md.
+// ===========================================================================
+/*
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
@@ -28,3 +35,6 @@ export async function createClient() {
     }
   );
 }
+*/
+
+export {};

@@ -4,9 +4,11 @@ name: Supabase keep-alive
 # Este workflow lanza una consulta ligera contra la API cada 3 días para mantenerlo activo.
 # Requiere el secret SUPABASE_ANON_KEY (clave anon/publishable, Settings > API).
 
+# DESACTIVADO: la app ahora usa la base local (ver docs/datos-supabase.md).
+# Para volver a Supabase, descomentá el schedule.
 on:
-  schedule:
-    - cron: "17 7 */3 * *"
+  # schedule:
+  #   - cron: "17 7 */3 * *"
   workflow_dispatch:
 
 jobs:
